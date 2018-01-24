@@ -1,13 +1,64 @@
+$defaultPadding: 15px;
+
 body {
-    max-width: 600px;
-    background-color: #fbc97f;
+  max-width: 600px;
+  background-color: #fbc97f;
+  margin: auto;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+p,
+button {
+  font-size: 24px;
+}
+
+img {
+  max-width: 100px;
+  max-height: 150px;
+}
+
+section.card {
+  width: 100px;
+  height: 150px;
 }
 
 header {
-    text-align: center;
+  text-align: center;
 
-    button {
-        background-color: red;
-    }
+  button {
+    background-color: red;
+    border-radius: 5px; // padding: 15px;
+    padding: $defaultPadding;
+  }
 }
 
+main {
+  background-color: yellow;
+  display: flex;
+  padding: $defaultPadding;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  text-align: center;
+
+  .card {
+    border: 1px solid red;
+    background-color: red;
+    margin: 10px;
+    color: white;
+  }
+
+  .card:hover {
+    border: 5px solid red;
+    // transition: <property> <duration> <timing-function> <delay>;
+    // transition-duration: .5s;
+    transition: background-color 1s; 
+  }
+
+  .hidden {
+    color: transparent;
+    background-color: teal;
+  }
+}

@@ -1,10 +1,47 @@
 body {
   max-width: 600px;
-  background-color: #fbc97f; }
+  background-color: #fbc97f;
+  margin: auto; }
+
+h1 {
+  font-size: 48px; }
+
+p,
+button {
+  font-size: 24px; }
+
+img {
+  max-width: 100px;
+  max-height: 150px; }
+
+section.card {
+  width: 100px;
+  height: 150px; }
 
 header {
   text-align: center; }
   header button {
-    background-color: red; }
+    background-color: red;
+    border-radius: 5px;
+    padding: 15px; }
+
+main {
+  background-color: yellow;
+  display: flex;
+  padding: 15px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  text-align: center; }
+  main .card {
+    border: 1px solid red;
+    background-color: red;
+    margin: 10px;
+    color: white; }
+  main .card:hover {
+    border: 5px solid red;
+    transition: background-color 1s; }
+  main .hidden {
+    color: transparent;
+    background-color: teal; }
 
 /*# sourceMappingURL=styles.css.map */
