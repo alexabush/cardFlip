@@ -2,11 +2,19 @@ const gameState = {
   totalNumClicks: 0,
   lastCardClicked: undefined,
   isGameWon: false,
-  firstCardFlipped: false
+  firstCardFlipped: false,
+  numPairsMatched: 0
 }
 
-const startGameBtn = document.querySelector('button');
+
+
+const newGameBtn = document.querySelector('button');
 const main = document.querySelector('main');
+const displayWinArea = document.querySelector('#displayWinStatus')
+
+newGameBtn.addEventListener('click', function(e) {
+    location.reload();
+})
 
 main.addEventListener('click', function(e) {
   // debugger;
@@ -14,15 +22,28 @@ main.addEventListener('click', function(e) {
     e.target.classList.toggle('hidden');
     gameState.totalNumClicks += 1;
     if (gameState.firstCardFlipped === true) {
-      setTimeout(function() {
-        e.target.classList.toggle('hidden');
-        gameState.lastCardClicked.classList.toggle('hidden');
+      if (e.target.innerText === gameState.lastCardClicked.innerText) {
+        gameState.numPairsMatched += 1;
         gameState.firstCardFlipped = false;
-        gameState.lastCardClicked = undefined;
-      }, 1000);
+        checkForWin();
+      } else {
+        setTimeout(function() {
+          e.target.classList.toggle('hidden');
+          gameState.lastCardClicked.classList.toggle('hidden');
+          gameState.firstCardFlipped = false;
+          gameState.lastCardClicked = undefined;
+        }, 1000);
+      }
     } else {
       gameState.firstCardFlipped = true;
       gameState.lastCardClicked = e.target;
     }
   }
 })
+
+function checkForWin() {
+    if (gameState.numPairsMatched === 4) {
+        gameState.isGameWon = true;
+        displayWinArea.innerText = "Woo! You got all the pairs!"
+    }
+}

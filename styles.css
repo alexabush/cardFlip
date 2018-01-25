@@ -37,9 +37,9 @@ main {
     background-color: red;
     margin: 10px;
     color: white; }
-  main .card:hover {
-    border: 5px solid red;
-    transition: background-color 1s; }
+    main .card:hover {
+      border: 5px solid red;
+      transition: background-color 1s; }
   main .hidden {
     color: transparent;
     background-color: teal; }

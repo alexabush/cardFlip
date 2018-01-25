@@ -48,15 +48,14 @@ main {
     background-color: red;
     margin: 10px;
     color: white;
-  }
 
-  .card:hover {
-    border: 5px solid red;
-    // transition: <property> <duration> <timing-function> <delay>;
-    // transition-duration: .5s;
-    transition: background-color 1s; 
+    &:hover {
+      border: 5px solid red; // transition: <property> <duration> <timing-function> <delay>;
+      // transition-duration: .5s;
+      transition: background-color 1s;
+    }
   }
-
+  
   .hidden {
     color: transparent;
     background-color: teal;
