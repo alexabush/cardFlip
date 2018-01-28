@@ -2,7 +2,7 @@ const gameState = {
   totalNumClicks: 0,
   lastCardClicked: undefined,
   isGameWon: false,
-  firstCardFlipped: false,
+  numberCardsFlipped: 0,
   numPairsMatched: 0
 };
 
@@ -21,23 +21,43 @@ main.addEventListener('click', function(e) {
   if (e.target.classList.contains('card')) {
     e.target.classList.toggle('hidden');
     gameState.totalNumClicks += 1;
-    if (gameState.firstCardFlipped === true) {
+    if (gameState.numberCardsFlipped === 0) {
+      gameState.numberCardsFlipped = 1;
+      gameState.lastCardClicked = e.target;
+    } else if (gameState.numberCardsFlipped === 1) {
+      gameState.numberCardsFlipped = 2; //this is uneccesary
       if (e.target.innerText === gameState.lastCardClicked.innerText) {
         gameState.numPairsMatched += 1;
-        gameState.firstCardFlipped = false;
         checkForWin();
+        gameState.numberCardsFlipped = 0;
+        gameState.lastCardClicked = undefined; //this should be uneccesary
       } else {
         setTimeout(function() {
           e.target.classList.toggle('hidden');
           gameState.lastCardClicked.classList.toggle('hidden');
-          gameState.firstCardFlipped = false;
+          gameState.numberCardsFlipped = false;
           gameState.lastCardClicked = undefined;
         }, 1000);
       }
-    } else {
-      gameState.firstCardFlipped = true;
-      gameState.lastCardClicked = e.target;
+
     }
+
+    //   if (e.target.innerText === gameState.lastCardClicked.innerText) {
+    //     gameState.numPairsMatched += 1;
+    //     gameState.numberCardsFlipped = false;
+    //     checkForWin();
+    //   } else {
+    //     setTimeout(function() {
+    //       e.target.classList.toggle('hidden');
+    //       gameState.lastCardClicked.classList.toggle('hidden');
+    //       gameState.numberCardsFlipped = false;
+    //       gameState.lastCardClicked = undefined;
+    //     }, 1000);
+    //   }
+    // } else {
+    //   gameState.numberCardsFlipped = true;
+    //   gameState.lastCardClicked = e.target;
+    // }
   }
 });
 
