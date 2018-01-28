@@ -33,13 +33,14 @@ main {
   justify-content: space-around;
   text-align: center; }
   main .card {
-    border: 1px solid red;
+    transform-style: preserve-3d;
     background-color: red;
     margin: 10px;
-    color: white; }
+    color: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+    transition: background-color 1s; }
     main .card:hover {
-      border: 5px solid red;
-      transition: background-color 1s; }
+      border: 2px solid red; }
   main .hidden {
     color: transparent;
     background-color: teal; }

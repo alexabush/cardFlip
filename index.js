@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
       displayNumClicks.innerText = `Total Number of Clicks: ${gameState.totalNumClicks}`;
       if (gameState.numberCardsFlipped === 0) {
         e.target.classList.toggle('hidden');
+        e.target.classList.toggle('cardFlip'); //not sure if this will work
         gameState.numberCardsFlipped = 1;
         gameState.lastCardClicked = e.target;
       } else if (gameState.numberCardsFlipped === 1) {
