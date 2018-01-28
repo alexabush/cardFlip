@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
   const newGameBtn = document.querySelector('button');
   const main = document.querySelector('main');
+  const displayNumClicks = document.querySelector('#displayNumClicks');
   const displayWinArea = document.querySelector('#displayWinStatus');
 
   newGameBtn.addEventListener('click', function(e) {
@@ -27,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   main.addEventListener('click', function(e) {
     if (e.target.classList.contains('card') && !gameState.preventFlip && !e.target.classList.contains('matched')) {
       gameState.totalNumClicks += 1;
+      displayNumClicks.innerText = `Total Number of Clicks: ${gameState.totalNumClicks}`;
       if (gameState.numberCardsFlipped === 0) {
         e.target.classList.toggle('hidden');
         gameState.numberCardsFlipped = 1;
