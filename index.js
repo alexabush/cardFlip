@@ -37,10 +37,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
         e.target.classList.toggle('hidden');
         if (e.target.innerText === gameState.lastCardClicked.innerText) {
           gameState.numPairsMatched += 1;
-          checkForWin();
           gameState.numberCardsFlipped = 0;
           e.target.classList.add('matched');
           gameState.lastCardClicked.classList.add('matched');
+          checkForWin();
         } else {
           gameState.preventFlip = true;
           setTimeout(function() {
