@@ -4,17 +4,17 @@ const gameState = {
   isGameWon: false,
   firstCardFlipped: false,
   numPairsMatched: 0
-}
+};
 
 
 
 const newGameBtn = document.querySelector('button');
 const main = document.querySelector('main');
-const displayWinArea = document.querySelector('#displayWinStatus')
+const displayWinArea = document.querySelector('#displayWinStatus');
 
 newGameBtn.addEventListener('click', function(e) {
-    location.reload();
-})
+  location.reload();
+});
 
 main.addEventListener('click', function(e) {
   // debugger;
@@ -39,11 +39,11 @@ main.addEventListener('click', function(e) {
       gameState.lastCardClicked = e.target;
     }
   }
-})
+});
 
 function checkForWin() {
-    if (gameState.numPairsMatched === 4) {
-        gameState.isGameWon = true;
-        displayWinArea.innerText = "Woo! You got all the pairs!"
-    }
+  if (gameState.numPairsMatched === 4) {
+    gameState.isGameWon = true;
+    displayWinArea.innerText = 'Woo! You got all the pairs!';
+  }
 }
