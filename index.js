@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   shuffle(gameState.cards);
 
   main.addEventListener('click', function(e) {
-    if (e.target.classList.contains('card') && !gameState.preventFlip) {
+    if (e.target.classList.contains('card') && !gameState.preventFlip && !e.target.classList.contains('matched')) {
       gameState.totalNumClicks += 1;
       if (gameState.numberCardsFlipped === 0) {
         e.target.classList.toggle('hidden');
@@ -37,6 +37,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
           gameState.numPairsMatched += 1;
           checkForWin();
           gameState.numberCardsFlipped = 0;
+          e.target.classList.add('matched');
+          gameState.lastCardClicked.classList.add('matched');
         } else {
           gameState.preventFlip = true;
           setTimeout(function() {
