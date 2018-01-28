@@ -1,6 +1,6 @@
 body {
   max-width: 600px;
-  background-color: #fbc97f;
+  background-color: #6C7476;
   margin: auto; }
 
 h1 {
@@ -21,12 +21,12 @@ section.card {
 header {
   text-align: center; }
   header button {
-    background-color: red;
+    background-color: #EE3233;
     border-radius: 5px;
     padding: 15px; }
 
 main {
-  background-color: yellow;
+  background-color: #F0ECEB;
   display: flex;
   padding: 15px;
   flex-wrap: wrap;
@@ -34,13 +34,13 @@ main {
   text-align: center; }
   main .card {
     transform-style: preserve-3d;
-    background-color: red;
+    background-color: #EE3233;
     margin: 10px;
     color: white;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
     transition: background-color 1s; }
     main .card:hover {
-      border: 2px solid red; }
+      border: 2px solid #EE3233; }
   main .hidden {
     color: transparent;
     background-color: teal; }
