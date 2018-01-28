@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
     location.reload();
   });
 
+  console.log('works');
   shuffle(gameState.cards);
 
   main.addEventListener('click', function(e) {
