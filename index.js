@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
       'a', 'a',
       'b', 'b',
       'c', 'c',
-      'd', 'd'
+      'd', 'd',
+      'e', 'e'
     ]
   };
 
