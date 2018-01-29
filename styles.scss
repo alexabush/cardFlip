@@ -5,7 +5,8 @@ $offColor: #EE3233;
 
 body {
   max-width: 600px;
-  background-color: #6C7476; // background-color: #F0ECEB;
+  background-color: hsla(180, 100%, 22%, 0.10); //lucas color
+  // background-color: #6C7476; // background-color: #F0ECEB;
   // background-color: #fbc97f;
   margin: auto;
 }
@@ -25,10 +26,7 @@ img {
   max-height: 150px;
 }
 
-.card {
-  width: 100px;
-  height: 150px;
-}
+.card {}
 
 header {
   text-align: center;
@@ -43,7 +41,7 @@ header {
 }
 
 main {
-  background-color: #F0ECEB; // background-color: #6C7476;
+  // background-color: #F0ECEB; // background-color: #6C7476;
   display: flex;
   padding: $defaultPadding;
   flex-wrap: wrap;
@@ -51,8 +49,11 @@ main {
   text-align: center;
 
   .card {
-    transform-style: preserve-3d; //no idea what this does
+    width: 100px;
+    height: 150px;
+    // transform-style: preserve-3d; //no idea what this does
     // border: 1px solid red;
+    border-radius: 5px;
     background-color: #EE3233;
     margin: 10px;
     color: white; // transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);

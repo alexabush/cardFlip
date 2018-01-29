@@ -1,6 +1,6 @@
 body {
   max-width: 600px;
-  background-color: #6C7476;
+  background-color: rgba(0, 112, 112, 0.1);
   margin: auto; }
 
 h1 {
@@ -15,10 +15,6 @@ img {
   max-width: 100px;
   max-height: 150px; }
 
-.card {
-  width: 100px;
-  height: 150px; }
-
 header {
   text-align: center;
   padding: 20px; }
@@ -29,14 +25,15 @@ header {
     margin-top: 10px; }
 
 main {
-  background-color: #F0ECEB;
   display: flex;
   padding: 15px;
   flex-wrap: wrap;
   justify-content: space-around;
   text-align: center; }
   main .card {
-    transform-style: preserve-3d;
+    width: 100px;
+    height: 150px;
+    border-radius: 5px;
     background-color: #EE3233;
     margin: 10px;
     color: white;
