@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
       const div = document.createElement('div');
       div.classList.add('hidden');
       div.classList.add('card');
+      div.innerText = gameState.cards[i];
       main.append(div);
     }
   }
