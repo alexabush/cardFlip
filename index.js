@@ -1,8 +1,11 @@
 document.addEventListener('DOMContentLoaded', function(event) {
+  const newGameBtn = document.querySelector('button');
+  const main = document.querySelector('main');
+  const displayNumClicks = document.querySelector('#displayNumClicks');
+  const displayWinArea = document.querySelector('#displayWinStatus');  
   const gameState = {
     totalNumClicks: 0,
     lastCardClicked: undefined,
-    isGameWon: false,
     numberCardsFlipped: 0,
     numPairsMatched: 0,
     preventFlip: false,
@@ -14,22 +17,17 @@ document.addEventListener('DOMContentLoaded', function(event) {
     ]
   };
 
-  const newGameBtn = document.querySelector('button');
-  const main = document.querySelector('main');
-  const displayNumClicks = document.querySelector('#displayNumClicks');
-  const displayWinArea = document.querySelector('#displayWinStatus');
+  shuffle(gameState.cards);
+  updateNumClicks();
 
   newGameBtn.addEventListener('click', function(e) {
     location.reload();
   });
 
-  console.log('works');
-  shuffle(gameState.cards);
-
   main.addEventListener('click', function(e) {
     if (e.target.classList.contains('card') && !gameState.preventFlip && !e.target.classList.contains('matched')) {
       gameState.totalNumClicks += 1;
-      displayNumClicks.innerText = `Total Number of Clicks: ${gameState.totalNumClicks}`;
+      updateNumClicks();
       if (gameState.numberCardsFlipped === 0) {
         e.target.classList.toggle('hidden');
         e.target.classList.toggle('cardFlip'); //not sure if this will work
@@ -58,13 +56,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
   });
 
   function checkForWin() {
-    if (gameState.numPairsMatched === 4) {
-      gameState.isGameWon = true;
+    if (gameState.numPairsMatched === (gameState.cards.length / 2)) {
       displayWinArea.innerText = 'Woo! You got all the pairs!';
     }
   }
-
-  let num = 1;
 
   function shuffle(cards) {
     cards = fisherYatesShuffle(cards);
@@ -88,5 +83,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
     return array;
   }
 
+  function updateNumClicks() {
+    displayNumClicks.innerText = `Total Number of Clicks: ${gameState.totalNumClicks}`;
+  }
 
 });
