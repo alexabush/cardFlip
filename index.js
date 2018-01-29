@@ -20,12 +20,15 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
   function addCards() {
     for (let i = 0; i < gameState.cards.length; i++) {
-      const section = document.createElement("section")
-        main.append()
+      const div = document.createElement('div');
+      div.classList.add('hidden');
+      div.classList.add('card');
+      main.append(div);
     }
   }
 
   shuffle(gameState.cards);
+  addCards();
   updateNumClicks();
 
   newGameBtn.addEventListener('click', function(e) {
