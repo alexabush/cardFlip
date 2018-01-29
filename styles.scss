@@ -11,7 +11,8 @@ body {
 }
 
 h1 {
-  font-size: 48px;
+  font-size: 56px;
+  margin: 0;
 }
 
 p,
@@ -31,11 +32,13 @@ img {
 
 header {
   text-align: center;
+  padding: 20px;
 
   button {
     background-color: #EE3233;
     border-radius: 5px; // padding: 15px;
     padding: $defaultPadding;
+    margin-top: 10px;
   }
 }
 
