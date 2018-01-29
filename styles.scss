@@ -1,13 +1,17 @@
 $defaultPadding: 15px;
-$cardColor: teal;
-$tableColor: #F0ECEB;
-$offColor: #EE3233;
+
+//original colors
+$cardTopColor: teal;
+$cardBottomColor: #EE3233;
+
+//lucas colors
+// $cardTopColor: hsla(180, 100%, 22%, 0.65); 
+// $cardBottomColor: hsl(0, 78%, 65%);
+;
 
 body {
   max-width: 600px;
   background-color: hsla(180, 100%, 22%, 0.10); //lucas color
-  // background-color: #6C7476; // background-color: #F0ECEB;
-  // background-color: #fbc97f;
   margin: auto;
 }
 
@@ -33,15 +37,14 @@ header {
   padding: 20px;
 
   button {
-    background-color: #EE3233;
-    border-radius: 5px; // padding: 15px;
+    background-color: $cardBottomColor;
+    border-radius: 5px;
     padding: $defaultPadding;
     margin-top: 10px;
   }
 }
 
 main {
-  // background-color: #F0ECEB; // background-color: #6C7476;
   display: flex;
   padding: $defaultPadding;
   flex-wrap: wrap;
@@ -54,14 +57,14 @@ main {
     // transform-style: preserve-3d; //no idea what this does
     // border: 1px solid red;
     border-radius: 5px;
-    background-color: #EE3233;
+    background-color: $cardBottomColor;
     margin: 10px;
     color: white; // transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     box-shadow: 0 6px 16px rgba(0, 0, 0, .5);
     transition: background-color 1s;
 
     &:hover {
-      border: 2px solid #EE3233; // transition: <property> <duration> <timing-function> <delay>;
+      border: 2px solid $cardBottomColor; // transition: <property> <duration> <timing-function> <delay>;
       // transition-duration: .5s;
       // transition: background-color 1s;
     }
@@ -74,6 +77,6 @@ main {
 
   .hidden {
     color: transparent;
-    background-color: teal;
+    background-color: $cardTopColor;
   }
 }
