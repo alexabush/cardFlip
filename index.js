@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
       'b', 'b',
       'c', 'c',
       'd', 'd',
-      'e', 'e'
+      'e', 'e',
+      'f', 'f'
     ]
   };
 
