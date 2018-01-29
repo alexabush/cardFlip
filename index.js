@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   const newGameBtn = document.querySelector('button');
   const main = document.querySelector('main');
   const displayNumClicks = document.querySelector('#displayNumClicks');
-  const displayWinArea = document.querySelector('#displayWinStatus');  
+  const displayWinArea = document.querySelector('#displayWinStatus');
   const gameState = {
     totalNumClicks: 0,
     lastCardClicked: undefined,
@@ -17,6 +17,13 @@ document.addEventListener('DOMContentLoaded', function(event) {
       'e', 'e'
     ]
   };
+
+  function addCards() {
+    for (let i = 0; i < gameState.cards.length; i++) {
+      const section = document.createElement("section")
+        main.append()
+    }
+  }
 
   shuffle(gameState.cards);
   updateNumClicks();
@@ -87,5 +94,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   function updateNumClicks() {
     displayNumClicks.innerText = `Total Number of Clicks: ${gameState.totalNumClicks}`;
   }
+
+
 
 });
