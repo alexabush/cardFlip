@@ -38,7 +38,8 @@ main {
     margin: 10px;
     color: white;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
-    transition: background-color 1s; }
+    transition: background-color 1s;
+    font-size: 20px; }
     main .card:hover {
       border: 2px solid #EE3233; }
   main .hidden {
