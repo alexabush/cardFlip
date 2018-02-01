@@ -38,32 +38,34 @@ document.addEventListener('DOMContentLoaded', function(event) {
   });
 
   main.addEventListener('click', function(e) {
-    if (e.target.classList.contains('card') && !gameState.preventFlip && !e.target.classList.contains('matched')) {
-      gameState.totalNumClicks += 1;
-      updateNumClicks();
-      if (gameState.numberCardsFlipped === 0) {
-        e.target.classList.toggle('hidden');
-        e.target.classList.toggle('cardFlip'); //not sure if this will work
-        gameState.numberCardsFlipped = 1;
-        gameState.lastCardClicked = e.target;
-      } else if (gameState.numberCardsFlipped === 1) {
-        e.target.classList.toggle('hidden');
-        if (e.target.innerText === gameState.lastCardClicked.innerText) {
-          gameState.numPairsMatched += 1;
+    if (!e.target.classList.contains('card')) return;
+    if (gameState.preventFlip) return;
+    if (e.target.classList.contains('matched')) return;
+    if (!e.target.classList.contains('hidden')) return;
+    gameState.totalNumClicks += 1;
+    updateNumClicks();
+    if (gameState.numberCardsFlipped === 0) {
+      e.target.classList.toggle('hidden');
+      e.target.classList.toggle('cardFlip');
+      gameState.numberCardsFlipped = 1;
+      gameState.lastCardClicked = e.target;
+    } else if (gameState.numberCardsFlipped === 1) {
+      e.target.classList.toggle('hidden');
+      if (e.target.innerText === gameState.lastCardClicked.innerText) {
+        gameState.numPairsMatched += 1;
+        gameState.numberCardsFlipped = 0;
+        e.target.classList.add('matched');
+        gameState.lastCardClicked.classList.add('matched');
+        checkForWin();
+      } else {
+        gameState.preventFlip = true;
+        setTimeout(function() {
+          e.target.classList.toggle('hidden');
+          gameState.lastCardClicked.classList.toggle('hidden');
           gameState.numberCardsFlipped = 0;
-          e.target.classList.add('matched');
-          gameState.lastCardClicked.classList.add('matched');
-          checkForWin();
-        } else {
-          gameState.preventFlip = true;
-          setTimeout(function() {
-            e.target.classList.toggle('hidden');
-            gameState.lastCardClicked.classList.toggle('hidden');
-            gameState.numberCardsFlipped = 0;
-            gameState.lastCardClicked = undefined;
-            gameState.preventFlip = false;
-          }, 1000);
-        }
+          gameState.lastCardClicked = undefined;
+          gameState.preventFlip = false;
+        }, 1000);
       }
     }
   });
