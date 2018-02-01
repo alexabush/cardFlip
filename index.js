@@ -38,43 +38,58 @@ document.addEventListener('DOMContentLoaded', function(event) {
   });
 
   main.addEventListener('click', function(e) {
-    if (!e.target.classList.contains('card')) return;
-    if (gameState.preventFlip) return;
-    if (e.target.classList.contains('matched')) return;
-    if (!e.target.classList.contains('hidden')) return;
+    if (validateClick() === false) return undefined;
     gameState.totalNumClicks += 1;
     updateNumClicks();
-    if (gameState.numberCardsFlipped === 0) {
+    if (gameState.numberCardsFlipped === 0) process1stFlip();
+    else if (gameState.numberCardsFlipped === 1) {
+      e.target.classList.toggle('hidden');
+      if (e.target.innerText === gameState.lastCardClicked.innerText) {
+        processMatch();
+        checkForWin();
+      } else flipCardsBack();
+    }
+
+    function validateClick() {
+      if (!e.target.classList.contains('card')) return false;
+      if (gameState.preventFlip) return false;
+      if (e.target.classList.contains('matched')) return false;
+      if (!e.target.classList.contains('hidden')) return false;
+    }
+
+    function process1stFlip() {
       e.target.classList.toggle('hidden');
       e.target.classList.toggle('cardFlip');
       gameState.numberCardsFlipped = 1;
       gameState.lastCardClicked = e.target;
-    } else if (gameState.numberCardsFlipped === 1) {
-      e.target.classList.toggle('hidden');
-      if (e.target.innerText === gameState.lastCardClicked.innerText) {
-        gameState.numPairsMatched += 1;
-        gameState.numberCardsFlipped = 0;
-        e.target.classList.add('matched');
-        gameState.lastCardClicked.classList.add('matched');
-        checkForWin();
-      } else {
-        gameState.preventFlip = true;
-        setTimeout(function() {
-          e.target.classList.toggle('hidden');
-          gameState.lastCardClicked.classList.toggle('hidden');
-          gameState.numberCardsFlipped = 0;
-          gameState.lastCardClicked = undefined;
-          gameState.preventFlip = false;
-        }, 1000);
+    }
+
+    function processMatch() {
+      gameState.numPairsMatched += 1;
+      gameState.numberCardsFlipped = 0;
+      e.target.classList.add('matched');
+      gameState.lastCardClicked.classList.add('matched');
+    }
+
+    function checkForWin() {
+      if (gameState.numPairsMatched === (gameState.cards.length / 2)) {
+        displayWinArea.innerText = 'Woo! You got all the pairs!';
       }
     }
+
+    function flipCardsBack() {
+      gameState.preventFlip = true;
+      setTimeout(function() {
+        e.target.classList.toggle('hidden');
+        gameState.lastCardClicked.classList.toggle('hidden');
+        gameState.numberCardsFlipped = 0;
+        gameState.lastCardClicked = undefined;
+        gameState.preventFlip = false;
+      }, 1000);
+    }
+
   });
 
-  function checkForWin() {
-    if (gameState.numPairsMatched === (gameState.cards.length / 2)) {
-      displayWinArea.innerText = 'Woo! You got all the pairs!';
-    }
-  }
 
   function shuffle(cards) {
     cards = fisherYatesShuffle(cards);
@@ -84,24 +99,26 @@ document.addEventListener('DOMContentLoaded', function(event) {
     });
   }
 
-  function fisherYatesShuffle(array) {
-    var currentIndex = array.length;
-    let temporaryValue = undefined;
-    let randomIndex = undefined;
-    while (0 !== currentIndex) {
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-    return array;
-  }
-
   function updateNumClicks() {
     displayNumClicks.innerText = `Total Number of Clicks: ${gameState.totalNumClicks}`;
   }
 
-
-
 });
+
+/*
+helper functions
+*/
+
+function fisherYatesShuffle(array) {
+  var currentIndex = array.length;
+  let temporaryValue = undefined;
+  let randomIndex = undefined;
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
+}
