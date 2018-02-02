@@ -19,6 +19,13 @@ document.addEventListener('DOMContentLoaded', function(event) {
     ]
   };
 
+  (function start() {
+    shuffle();
+    addCards();
+    updateNumClicks();
+  })();
+
+
   function addCards() {
     for (let i = 0; i < gameState.cards.length; i++) {
       const div = document.createElement('div');
@@ -29,9 +36,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
   }
 
-  shuffle(gameState.cards);
-  addCards();
-  updateNumClicks();
+
 
   newGameBtn.addEventListener('click', function(e) {
     location.reload();
@@ -90,9 +95,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
   });
 
-
-  function shuffle(cards) {
-    cards = fisherYatesShuffle(cards);
+  function shuffle() {
+    var cards = fisherYatesShuffle(gameState.cards);
     const sections = document.querySelectorAll('main section');
     sections.forEach((section, i) => {
       section.innerText = cards[i];
