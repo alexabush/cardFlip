@@ -25,19 +25,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
     updateNumClicks();
   })();
 
-
-  function addCards() {
-    for (let i = 0; i < gameState.cards.length; i++) {
-      const div = document.createElement('div');
-      div.classList.add('hidden');
-      div.classList.add('card');
-      div.innerText = gameState.cards[i];
-      main.append(div);
-    }
-  }
-
-
-
   newGameBtn.addEventListener('click', function(e) {
     location.reload();
   });
@@ -95,6 +82,16 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
   });
 
+  function addCards() {
+    for (let i = 0; i < gameState.cards.length; i++) {
+      const div = document.createElement('div');
+      div.classList.add('hidden');
+      div.classList.add('card');
+      div.innerText = gameState.cards[i];
+      main.append(div);
+    }
+  }
+  
   function shuffle() {
     var cards = fisherYatesShuffle(gameState.cards);
     const sections = document.querySelectorAll('main section');
